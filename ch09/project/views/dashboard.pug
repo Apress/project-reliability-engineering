@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    script(src='main.js')
+    link(href='https://fonts.googleapis.com/css?family=Merriweather|Montserrat' rel='stylesheet')
+    link(rel='stylesheet', href='style.css')
+    link(rel='stylesheet', href='responsive.css')
+  body
+    h1 weather station
+    div(id="dashboard-sections-container")
+      div(id="sensors")
+        table
+          caption sensor data
+          tr
+            th name
+            th time
+            th reading
+            th units     
+          each sensor in sensors
+            tr(class="sensor" id=sensor.name)
+              td= sensor.name
+              td(class="time") 
+              td(class="last-read")
+              td= sensor.units
+      div(id="fans")
+        table
+          caption fans
+            tr
+              th name
+              th state
+            each fan in fans
+              tr(class="fan" id=fan.name)
+                td= fan.name
+                td(class="state")
+      div(id="fakes")
+        h2 fakess
+        each sensor in sensors
+          if sensor.isFake
+            label(for=sensor.name)= sensor.name 
+            input(
+              type="range" 
+              name=sensor.name  
+              min="0" 
+              max="50" 
+              oninput="setFakeTemp(this)"
+            )
+            

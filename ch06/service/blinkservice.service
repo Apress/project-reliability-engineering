@@ -1,0 +1,17 @@
+[Unit]
+Description=My service
+After=network.target
+;StartLimitIntervalSec=0
+
+[Service]
+ExecStart=/usr/bin/python3 testservice.py
+WorkingDirectory=/home/person/book/ch06/service/
+;StandardOutput=inherit
+;StandardError=inherit
+Restart=always
+RestartSec=1
+User=person
+ExecStopPost=/bin/bash /home/person/book/ch06/service/fail.sh
+
+[Install]
+WantedBy=multi-user.target

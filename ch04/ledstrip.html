@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    #led-strip {
+      width: 500px;
+      height: 20px;
+      border: 1px solid black;
+    }
+  </style>
+  <div id="led-strip"></div>
+  <script>
+    let ledData = [
+      [255, 50, 127],
+      [0, 50, 127],
+      [0, 127, 255],
+    ];
+
+    function rgbListToString(rgb) {
+      return `rgb(${rgb.join(',')})`; 
+    }
+
+    function dataToGradient(ledList) {
+      let rgbStringList = ledList.map(rgbListToString);
+      return `linear-gradient(to right, ${rgbStringList.join(',')})`;
+    };
+
+    document.getElementById("led-strip").style.background = dataToGradient(ledData);
+  </script>
+</body>
+</html>

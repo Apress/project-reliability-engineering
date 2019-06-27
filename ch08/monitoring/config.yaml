@@ -1,0 +1,20 @@
+# Check messages from the last x minutes
+interval: 60
+
+# Alert throttling, in minutes
+throttle: 120
+
+# Alerts types
+alerts:
+- string: ERROR 
+  threshold: 20
+  message: Error rate
+  playbook: https://tinyurl.com/pre-playbook1
+- string: CRITICAL
+  threshold: 1
+  message: Critical errors rate
+  playbook: https://tinyurl.com/pre-playbook2
+- string: reboot
+  threshold: 2
+  message: Machine rebooted
+  playbook: https://tinyurl.com/pre-playbook3

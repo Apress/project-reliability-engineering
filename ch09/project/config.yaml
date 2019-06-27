@@ -1,0 +1,10 @@
+# Sensors configuration
+sensors:
+  - name: temperature_east
+    type: FakeTemp
+    units: "deg C"
+    temp: 24
+  - name: temperature_west
+    type: Si7021Temp	  
+    i2cbus: 1
+    units: "deg C"

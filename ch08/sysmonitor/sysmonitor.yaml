@@ -1,0 +1,8 @@
+metrics:
+  - name: cpu
+    threshold: 90
+  - name: mem
+    threshold: 90
+  - name: hdd
+    threshold: 2
+

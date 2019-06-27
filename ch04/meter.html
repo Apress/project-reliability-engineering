@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+  <style>
+    .meter-container {
+      width: 400px;
+      margin: 2em;
+    }
+
+    .meter-container>* {
+      width: 100%;
+    }
+
+    .lines, .texts {
+      height: 1em;
+      position: relative;
+    }
+
+    .line::before {
+      content: "|";
+    }
+
+    .line, .text {
+      position: absolute;
+      font-family: monospace;
+      width: 5em;
+      text-align: center;
+      transform: translateX(-2.5em)
+    }
+
+    .min {
+      left: 0%;
+    }
+    .max {
+      left: 100%;
+    }
+    .low {
+      left: 33%;
+    }
+    .high {
+      left: 66%;
+    }
+    .optimum-low {
+      left: 16%;
+    }
+    .optimum-high {
+      left: 84%;
+    }
+
+    
+  </style>  
+</head>
+<body>
+  <div class="meter-container">
+    <div class="texts">
+        <div class="text min">min</div>
+        <div class="text max">max</div>
+        <div class="text low">low</div>
+        <div class="text high">high</div>
+        <div class="text optimum-low">optimum</div>
+    </div>
+    <div class="lines">
+      <div class="line min"></div>
+      <div class="line max"></div>
+      <div class="line low"></div>
+      <div class="line high"></div>
+      <div class="line optimum-low"></div>
+    </div>
+    <meter low="33" high="66" min="0" max="100" value="16" optimum="16"></meter>
+    <meter low="33" high="66" min="0" max="100" value="50" optimum="16"></meter>
+    <meter low="33" high="66" min="0" max="100" value="84" optimum="16"></meter>
+  </div>
+
+  <div class="meter-container">
+      <div class="texts">
+          <div class="text min">min</div>
+          <div class="text max">max</div>
+          <div class="text low">low</div>
+          <div class="text high">high</div>
+          <div class="text optimum-high">optimum</div>
+      </div>
+      <div class="lines">
+        <div class="line min"></div>
+        <div class="line max"></div>
+        <div class="line low"></div>
+        <div class="line high"></div>
+        <div class="line optimum-high"></div>
+      </div>
+      <meter low="33" high="66" min="0" max="100" value="16" optimum="84"></meter>
+      <meter low="33" high="66" min="0" max="100" value="50" optimum="84"></meter>
+      <meter low="33" high="66" min="0" max="100" value="84" optimum="84"></meter>
+    </div>
+</body>
+</html>

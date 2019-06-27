@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <ul>
+    {% for s in sensor_list %}        
+      <li>{{s.name}}: {{s.measurement}} 
+          {{s.units}}</li>
+    {% endfor %}
+    </ul>
+    <div>Measuring: 
+      <button data-initial="{{ is_measuring }}" 
+              id="toggle-loop">
+      </button>
+    </div>
+    <script>
+let loopButton = 
+  document.getElementById('toggle-loop');
+let isMeasuring = 
+  loopButton.getAttribute('data-initial') == 'True';
+
+function setLoopButtonText(state) {
+  loopButton.innerHTML = state ? "stop" : "start";
+}
+
+setLoopButtonText(isMeasuring);
+
+loopButton.addEventListener("click", () => {
+  let url = new URL(
+    'control', window.location.origin);
+  let params = {loop: !isMeasuring };
+  url.search = new URLSearchParams(params);
+  fetch(url, {
+    method: 'get'
+  }).then(function(response) {
+    return response.json();
+  }).then(function(data) {
+    isMeasuring = data.is_measuring;
+    setLoopButtonText(isMeasuring);
+    });
+  });
+    </script>        
+  </body>
+</html>

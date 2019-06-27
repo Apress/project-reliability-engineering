@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+</head>
+
+<body>
+  <style>
+
+    .flex_parent > div:nth-child(1) {
+      width: 5.5em;
+      height: 2em;
+    }
+
+    .flex_parent > div:nth-child(2) {
+      width: 7em;
+      height: 1em;
+    }
+    .flex_parent > div:nth-child(3) {
+      width: 3.5em;
+      height: 3em;
+    }
+    .flex_parent > div:nth-child(4) {
+      width: 5em;
+      height: 1.5em;
+    }
+
+    pre {
+      margin: 0;
+    }
+
+    .flex_parent {
+      border: 1px black dashed;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      margin-bottom: 1em;
+      background-color: #E0E0E0;
+    }
+
+    .flex_parent > div {
+      border: 1px solid black;
+      counter-increment: childCount;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #FFFFFF;
+    }
+
+    .flex_parent > div::before {
+      content: "child-"  counter(childCount)
+    }
+  
+    #two-columns {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between
+    }
+
+    #two-columns > div {
+      width: 45%;
+    }
+
+    #two-columns .flex_parent {
+      height: 200px;
+    }
+  </style>
+  <pre>
+display: flex;
+flex-direction: row;
+justify-content:space-evenly;
+  </pre>
+  <div class="flex_parent">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <pre>
+justify-content: center;
+  </pre>
+  <div class="flex_parent" style="justify-content: center"">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <pre>
+align-items: center;
+  </pre>
+  <div class="flex_parent" style="align-items: center;">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div id="two-columns">
+    <div>
+        <pre>
+flex-direction: row; 
+flex-wrap: wrap; 
+align-content: space-between;
+        </pre>
+      <div class="flex_parent" style="flex-direction: row; flex-wrap: wrap; align-content: space-between">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div>
+      <pre>
+flex-direction: column; 
+align-items: center; 
+justify-content: space-between;
+      </pre>           
+      <div class="flex_parent" style="flex-direction: column; align-items: center; justify-content: space-between;">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <ul id="sensors-data"></ul>
+    <script>
+
+function queryStatus() {
+  fetch('/status', {
+    method: 'get'
+  }).then((response) => {
+    return response.json();
+  }).then((data) => {
+    updateDashboard(data);
+  });
+}
+
+function updateDashboardReplace(data) {
+  let sensorListElement = 
+    document.getElementById('sensors-data');
+    sensorListElement.innerHTML = '';
+  for (let sensor of data.sensors) {
+    let newItem = document.createElement('li');
+    newItem.innerHTML = `${sensor.name}: \
+      ${sensor.measurement} ${sensor.units}`;
+    sensorListElement.appendChild(newItem);
+  }
+}
+
+  function updateDashboard(data) {
+    let sensorListElement = 
+      document.getElementById('sensors-data');
+    for (let sensor of data.sensors) {
+      sensorElement = 
+        document.getElementById(sensor.name)
+      if (!sensorElement) {
+        sensorElement =
+          document.createElement('li');
+        sensorElement
+          .setAttribute('id', sensor.name);
+        sensorElement.innerHTML = 
+          `${sensor.name}: \ 
+          <span class="measurement"></span> \
+          ${sensor.units}`;
+        sensorListElement.appendChild(sensorElement);
+      }   
+      sensorElement
+        .getElementsByClassName('measurement')[0]
+        .innerHTML = sensor.measurement;   
+  }
+}
+
+
+setInterval(queryStatus, 1000);
+window.onload = queryStatus;
+
+    </script>
+  </body>
+</html>

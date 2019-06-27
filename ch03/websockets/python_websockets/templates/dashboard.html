@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <ul id="sensor-list">
+  </ul>
+  <script>
+var ws = new WebSocket(
+  `ws://${location.hostname}:3001`
+);
+ws.onmessage = function (ev) {
+  data = JSON.parse(ev.data);
+  if (document.getElementById(data.name) == null) {
+    let newLine = document.createElement("li");
+    newLine.setAttribute("id", data.name);
+    document.getElementById("sensor-list").appendChild(newLine);
+  }
+    document.getElementById(data.name).innerHTML = `${data.name}: ${data.measurement} ${data.units}`;
+};
+  </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+interval: 5
+fans:
+- name: fan1
+  pin: 20
+- name: fan2
+  pin: 21

@@ -1,0 +1,9 @@
+doctype html
+html
+  body
+    ul
+      each sensor in sensors
+        li= sensor.name 
+          = ': ' 
+          = sensor.measurement 
+          = sensor.units

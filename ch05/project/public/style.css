@@ -1,0 +1,81 @@
+@media (-webkit-min-device-pixel-ratio: 1.1) {
+  body {
+    font-size: 2em;
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; 
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  text-align: center;
+  text-transform: capitalize;
+  font-family: 'Merriweather', serif;
+}
+
+table {
+  margin: 1em;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th {
+  text-transform: capitalize;
+}
+
+
+caption {
+  font-size: 1.3em;
+  text-transform: uppercase;
+  margin-bottom: 0.2em;
+}
+
+th { 
+  background-color: lightblue;
+  padding: 0.25em;
+}
+
+td {
+  font-family: 'Courier New', Courier, monospace;
+  padding: 0.25em;
+}
+
+#dashboard-sections-container {
+  display: flex;
+  flex-direction: row; 
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.sensor .last-read {
+  text-align: right;
+}
+
+.fan.on .state {
+  background-color: lightgreen;
+}
+
+.fan.on .state::before {
+  content: "on";
+}
+
+.fan.off .state {
+  background-color:  lightcoral;
+}
+
+.fan.off .state::before {
+  content: "off";
+}
+
+
+

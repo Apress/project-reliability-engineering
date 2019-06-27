@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+</head>
+<body>
+  <style>
+    h1 {
+      font-size: 1.3em;
+    }
+    .capitalize {
+      text-transform: capitalize;
+    }
+    .no-caps {
+      text-transform: none;
+    }
+    .all-caps {
+      text-transform: uppercase;
+    }
+    .small-caps {
+      font-variant:small-caps;
+      text-transform: capitalize;
+    }
+    td {
+      padding: 0em 1em;
+    }
+  </style>
+  <table>
+    <tr>
+      <td>
+        <h1 class="no-caps">no capitalization</h1>
+        <pre>
+h1 {
+  text-transform: none;
+}
+        </pre>
+      </td>
+      <td>
+        <h1 class="all-caps">all-caps header</h1>
+        <pre>
+h1 {
+  text-transform: uppercase;
+}
+        </pre>
+      </td>
+    </tr>
+    <tr>
+        <td>
+          <h1 class="capitalize">capitalized header</h1>
+          <pre>
+h1 {
+  text-transform: capitalize;
+}
+          </pre>
+        </td>
+        <td>
+          <h1 class="small-caps">small caps header</h1>
+          <pre>
+h1 {
+  font-variant:small-caps;
+  text-transform: capitalize;
+}
+          </pre>
+        </td>
+      </tr>
+  </table>
+</body>
+</html>

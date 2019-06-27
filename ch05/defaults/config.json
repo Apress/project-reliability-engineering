@@ -1,0 +1,15 @@
+{
+  "sensors": [{
+    "name": "sensor1",
+    "type": "type1",
+    "pin": 20
+  },
+  {
+    "name": "sensor2",
+    "type": "type2",
+    "pin": 21,
+    "position": {
+      "x": 5
+    }
+  }]
+}
