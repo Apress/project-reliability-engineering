@@ -53,9 +53,9 @@ class MPL3115A2Temp(Sensor):
     data = self.bus.read_i2c_block_data(0x60, 0x00, 6)
     self.measurement = ((data[4] * 256) + (data[5] & 0xF0)) / 16 / 16
     
-sensors_list = []
-sensors_list.append(Si7021Temp("temp", 1))
-sensors_list.append(Si7021Temp("temp_2", 1))
+sensor_list = []
+sensor_list.append(Si7021Temp("temp", 1))
+sensor_list.append(Si7021Temp("temp_2", 1))
 
   
 def measuring_loop():

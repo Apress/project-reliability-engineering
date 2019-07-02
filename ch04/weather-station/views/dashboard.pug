@@ -2,10 +2,10 @@ doctype html
 html
   head
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    script(src='main.js')
+    script(src='/scripts/main.js')
     link(href='https://fonts.googleapis.com/css?family=Merriweather|Montserrat' rel='stylesheet')
-    link(rel='stylesheet', href='style.css')
-    link(rel='stylesheet', href='responsive.css')
+    link(rel='stylesheet', href='/styles/style.css')
+    link(rel='stylesheet', href='/styles/responsive.css')
   body
     h1 weather station
     div(id="dashboard-sections-container")
@@ -21,7 +21,7 @@ html
             tr(class="sensor" id=sensor.name)
               td= sensor.name
               td(class="time") 
-              td(class="last-read")
+              td(class="measurement")
               td= sensor.units
       div(id="fans")
         table
