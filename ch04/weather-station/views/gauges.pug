@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    script(src='https://www.gstatic.com/charts/loader.js')
+    script(src='/scripts/gauges.js')
+    link(href='https://fonts.googleapis.com/css?family=Merriweather|Montserrat' rel='stylesheet')
+    link(rel='stylesheet', href='/styles/style.css')
+    link(rel='stylesheet', href='/styles/responsive.css')
+  body
+    h1 weather station
+    div(id='dashboard-sections-container')
+      div(id='gauges')
+      each sensor in sensors
+        div(
+          id=sensor.name
+          class='gauge-container'
+          data-label=sensor.name
+          data-min=sensor.min
+          data-max=sensor.max
+        )
+      div(id='fans')
+        table
+          caption fans
+            tr
+              th name
+              th state
+            each fan in fans
+              tr(class='fan' id=fan.name)
+                td= fan.name
+                td(class='state')
