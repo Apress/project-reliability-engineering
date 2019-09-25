@@ -2,7 +2,7 @@ var ws = new WebSocket(
   `ws://${location.hostname}:3001`
 );
 ws.onmessage = function (event) {
-  data = JSON.parse(event.data);
+  let data = JSON.parse(event.data);
   updateDashboard(data);
 };
 
@@ -19,8 +19,8 @@ function updateDashboard(data) {
             = new Date(sensor.time).toLocaleTimeString();
           sensorElement
             .getElementsByClassName(
-            "last-read")[0].innerHTML 
-            = sensor.lastRead.toFixed(3); 
+            "measurement")[0].innerHTML 
+            = sensor.measurement.toFixed(3); 
         }
         break;
       case "fans":
@@ -35,8 +35,8 @@ function updateDashboard(data) {
               fanElement.classList.add("off");
               fanElement.classList.remove("on");
             }
-         }
-       }          
+          }
+        }          
     }
   }  
 }

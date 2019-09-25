@@ -1,0 +1,27 @@
+<!-- Example 1: using attributes -->
+<fans>
+  <fan name="fan1" pin="20" />
+  <fan name="fan2" pin="21" />
+</fans>
+
+<!-- Example 2: using child elements -->
+<fans>
+  <fan>
+    <name>fan1</name>
+    <pin>20</pin>
+  </fan>
+  <fan>
+    <name>fan2</name>
+    <pin>21</pin>
+  </fan>
+</fans>
+
+<!—Example 3: using both -->
+<fans>
+  <fan name="fan1">
+    <pin>20</pin>
+  </fan>
+  <fan name="fan2">
+    <pin>21</pin>
+  </fan>
+</fans>

@@ -4,10 +4,15 @@ var gpio = require('rpi-gpio');
 gpio.setMode(gpio.MODE_BCM);
 
 app.set('view engine', 'pug');
-app.use(express.static('public'))
-app.get('/', (request, response) => {
+app.use(express.static('static'))
+app.get('/dashboard', (request, response) => {
   response.render(
     'dashboard', { sensors: sensorList, fans: fanList });
+});
+
+app.get('/gauges', (request, response) => {
+  response.render(
+    'gauges', { sensors: sensorList, fans: fanList });
 });
   
 app.listen(3000, function () {
@@ -82,7 +87,8 @@ class MPL3115A2Temp extends Sensor {
     this.i2cBus.writeByteSync(0x60, 0x26, 0xB9);
     this.i2cBus.writeByteSync(0x60, 0x13, 0x07);
     this.i2cBus.writeByte(0x60, 0x26, 0xB9, (err) => {
-      setTimeout(() =>        let data = new Buffer(6);
+      setTimeout(() => {
+        let data = new Buffer(6);
         this.i2cBus.i2cReadSync(0x60, 6, data);
         let temp = ((data[4] * 256) + (data[5] & 0xF0)) / 16;
         this.measurement = (temp / 16.0);
@@ -109,17 +115,17 @@ class Fan {
 }
 
 const WebSocket = require('ws');
-const wss = new WebSocket.Server({
+const wsServer = new WebSocket.Server({
   port: 3001,
 });
 
 wsServer.broadcast = function(data) {
-  for (client of wss.clients) {
+  for (client of wsServer.clients) {
     client.send(data);
   }
 };
  
-wss.on('connection', function connection(ws) {
+wsServer.on('connection', function connection(ws) {
   wsServer.broadcast(JSON.stringify({sensors: sensorList}));
   ws.on('message', function incoming(data) {
     //
@@ -129,7 +135,7 @@ wss.on('connection', function connection(ws) {
 
   var sensorList = [];
   var fanList = [];
-  var threshold  = 22.225;
+  var threshold  = 24;
   sensorList.push(new Si7021Temp("Si7021Temp", 1));
   sensorList.push(new MPL3115A2Temp("MPL3115A2Temp", 1));
   fanList.push(new Fan("left", 20));
@@ -143,7 +149,7 @@ wss.on('connection', function connection(ws) {
 setInterval(() => {
   for (s of sensorList) {
     s.read()  
-    wss.broadcast(JSON.stringify({
+    wsServer.broadcast(JSON.stringify({
       sensors: [s]
     }));
   } 

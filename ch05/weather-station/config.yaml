@@ -1,0 +1,17 @@
+# Sensors configuration
+sensors:
+- name: temperature_east
+  type: Si7021Temp	  
+  i2cBusId: 1
+  units: "deg C"
+- name: temperature_west
+  type: MPL3115A2Temp	  
+  i2cBusId: 1
+  units: "deg C"
+# Fans configuration
+fans:
+- name: fan1
+  pin: 20
+- name: fan2
+  pin: 21
+

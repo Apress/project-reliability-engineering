@@ -1,0 +1,13 @@
+{  
+  "_fans": "Documentation for fan list goes here",
+  "fans": [  
+    {  
+      "name": "fan1",
+      "pin": 20
+    },
+    {  
+      "name": "fan2",
+      "pin": 21
+    }
+  ]
+}
