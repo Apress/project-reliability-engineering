@@ -123,7 +123,7 @@ if __name__ == '__main__':
   measuring_thread.start()
   ws_thread = threading.Thread(target=websocket_thread)
   ws_thread.start()
-  app.run(host = '0.0.0.0')
+  app.run(host = '0.0.0.0', port=5001)
     
   
 
