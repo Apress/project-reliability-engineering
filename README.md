@@ -3,7 +3,7 @@
 This repository accompanies [*Project Reliability Engineering: Pro Skills for Next Level Maker Projects*](https://www.apress.com/9781484250167) by Eyal Shahar (Apress, 2019).
 
 [comment]: #cover
-![Cover image](9781484250167.jpg)
+<img src="book_cover.jpg" width="200">
 
 Download the files as a zip using the green button, or clone the repository to your machine using Git.
 
