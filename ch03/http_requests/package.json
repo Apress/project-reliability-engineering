@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "i2c-bus": "^4.0.10",
     "pug": "^2.0.4"
   }
